@@ -3,6 +3,11 @@
 	<title>Welcome to the DevOps</title>
 </head>
 <body>
-This is chef 
+<h3>This is chef </h3>
+<b><h>Hello <%= node['fqdn']%> </h> </b>
+<p>This Machine name is <%= node['hostname'] %> </p>
+<p> This server has <%= node["memory"]["total"].to_i / 1024 %> MB memory. 
+<p> <font color="green">  I am just testing cookbooks </font>
+</p>
 </body>
 </html>
