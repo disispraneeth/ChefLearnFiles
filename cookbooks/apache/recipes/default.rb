@@ -6,21 +6,12 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package_name = "apache2"
-service_name = "apache2"
-document_root = "/var/www"
 
-if node["platform"] == "centos"
-	package_name = "httpd"
-	service_name = "httpd"
-	document_root = "/var/www/html"
-end
-
-package "httpd" do 
+package node["package_name"] do 
 	action :install
 end
 
-service "httpd" do
+service node["service_name"] do
 	action [ :enable, :start ]
 end 
 
@@ -29,7 +20,7 @@ end
 #	mode "0644"
 #end
 
-template "#{document_root}/index.html" do
+template "#{node["document_root"]}/index.html" do
 	source "index.html.erb"
 	mode "0644"
 end
